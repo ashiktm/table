@@ -1,0 +1,105 @@
+button:focus {
+  outline: none;
+}
+h3 {
+  color: #ffffff;
+  font-size: 24px;
+  margin: 0;
+}
+// button {
+//   background-color: #37446e;
+//   color: white;
+// }
+::ng-deep .mat-dialog-container {
+  padding: 0 !important;
+}
+.header {
+  padding: 20px;
+  background-color: #283251;
+  display: flex;
+  justify-content: space-between;
+  button {
+    border-radius: 50%;
+    background-color: #37446e;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border: 0;
+  }
+  ::ng-deep .mat-fab .mat-button-wrapper {
+    padding: 0;
+  }
+}
+.form-content {
+  width: 100%;
+  padding: 20px 20px 15px;
+
+  .field-group.radio-field {
+    width: 30%;
+  }
+}
+
+::ng-deep .mat-dialog-content {
+  margin: 0;
+  padding: 0;
+  max-height: 80vh;
+}
+.gap-2 {
+  gap: 20px;
+}
+.line {
+  background-color: #fafafa;
+  width: 100%;
+  height: 3px;
+  width: 52%;
+  position: absolute;
+
+  right: 0;
+}
+.inner {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.add-client {
+  .datepicker-grp {
+    position: relative;
+    margin: 0 0 15px 0;
+
+    .field-group .mainfield {
+      margin: 0;
+      padding: 20px 15px 8px 35px;
+    }
+
+    .mat-datepicker-toggle {
+      position: absolute;
+      left: 0;
+      top: 7px;
+    }
+  }
+}
+.d-flex.field-single {
+  .field-group {
+    width: 30%;
+  }
+}
+.field-group.quarter {
+  width: 48%;
+}
+
+.field-group.radio-field {
+  width: 22%;
+}
+.file-browse {
+  width: 43%;
+}
+.add-client {
+  .footer {
+    width: 100%;
+    border-top: 1px solid #dbdbdb;
+    padding: 15px;
+    display: flex;
+    justify-content: end;
+  }
+}
