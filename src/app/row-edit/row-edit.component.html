@@ -1,6 +1,6 @@
 <div class="card">
   <h5>Row Editing</h5>
-  <form #product="ngForm">
+  <form #products="ngForm">
     <p-table
       [value]="products2"
       dataKey="id"
@@ -31,7 +31,7 @@
                   type="text"
                   [(ngModel)]="product.code"
                   required
-                  [ngModelOptions]="{ standalone: true }"
+                  name="code{{ product.code }}"
                 />
                 <div *ngIf="product.code === ''">This field is required</div>
               </ng-template>
@@ -48,7 +48,9 @@
                   type="text"
                   [(ngModel)]="product.name"
                   required
+                  #ri="ngModel"
                   minlength="4"
+                  ngModel
                   name="name{{ product.code }}"
                 />
                 <div *ngIf="product.name === ''">This field is required</div>
@@ -68,7 +70,7 @@
                   [options]="statuses"
                   [(ngModel)]="product.inventoryStatus"
                   [style]="{ width: '100%' }"
-                  [ngModelOptions]="{ standalone: true }"
+                  name="option{{ product.code }}"
                 ></p-dropdown>
               </ng-template>
               <ng-template pTemplate="output">
@@ -83,7 +85,7 @@
                   pInputText
                   type="text"
                   [(ngModel)]="product.price"
-                  [ngModelOptions]="{ standalone: true }"
+                  name="price{{ product.code }}"
                 />
               </ng-template>
               <ng-template pTemplate="output">
@@ -109,7 +111,11 @@
               type="button"
               pSaveEditableRow
               icon="pi pi-check"
-              [disabled]="product.invalid"
+              [disabled]="
+                product.name === '' ||
+                (product.name.length < 4 && product.name != '') ||
+                product.code === ''
+              "
               (click)="onRowEditSave(product, ri)"
               class="p-button-rounded p-button-text p-button-success mr-2"
             ></button>
@@ -128,6 +134,6 @@
       </ng-template>
     </p-table>
   </form>
-  <pre>Valid : {{ product.invalid }} </pre>
-  <pre>Value : {{ product.value | json }} </pre>
+  <pre>Valid : {{ products.invalid }} </pre>
+  <pre>Value : {{ products.value | json }} </pre>
 </div>
