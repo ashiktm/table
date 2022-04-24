@@ -30,10 +30,12 @@
                   pInputText
                   type="text"
                   [(ngModel)]="product.code"
+                  (keyup)="checkUniqueCode(product.code, ri)"
                   required
                   name="code{{ product.code }}"
                 />
                 <div *ngIf="product.code === ''">This field is required</div>
+                <div *ngIf="isUniqueCode">The code must be unique</div>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ product.code }}
@@ -114,7 +116,8 @@
               [disabled]="
                 product.name === '' ||
                 (product.name.length < 4 && product.name != '') ||
-                product.code === ''
+                product.code === '' ||
+                isUniqueCode
               "
               (click)="onRowEditSave(product, ri)"
               class="p-button-rounded p-button-text p-button-success mr-2"

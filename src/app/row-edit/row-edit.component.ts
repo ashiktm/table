@@ -19,6 +19,7 @@ import { FormGroup } from '@angular/forms';
   ],
 })
 export class RowEditComponent implements OnInit {
+  isUniqueCode = false;
   products1: Product[] = [];
 
   products2: Product[] = [];
@@ -79,5 +80,20 @@ export class RowEditComponent implements OnInit {
   onRowEditCancel(product: Product, index: number) {
     this.products2[index] = this.clonedProducts[product.id!];
     delete this.clonedProducts[product.id!];
+  }
+  checkUniqueCode(code: string, index: number) {
+    console.log(code, index);
+    // this.products2.map((el,i)=>{
+    //   if(i != index){
+    //     if(code === el.code){
+
+    //     }
+    //   }
+    // })
+    this.isUniqueCode = this.products2.some((element, id) => {
+      if (element.code === code && id != index) {
+        return true;
+      } else return false;
+    });
   }
 }
